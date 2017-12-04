@@ -1,0 +1,41 @@
+.header-banner {
+  background: url('../images/bg-kapsul.jpg');
+  background-size: cover;
+  position: relative;
+  min-height: 560px;
+  background-attachment: fixed;
+
+  &:after{
+    content: "";
+    display: block;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  h1 {
+    position: absolute;
+    z-index: 10;
+    bottom: 100px;
+    right: 40px;
+
+    // @include breakpoint(medium) {
+    //   bottom: 50px;
+    //   right: 50px;
+    // }
+    img {
+      max-width: 250px;
+    }
+  }
+}
+
+
+@media only screen and (min-width: 64.063em) {
+
+  .header-banner {
+    min-height: 100vh;
+  }
+
+}

@@ -1,0 +1,23 @@
+.large-centered{
+  margin: 0 auto;
+}
+// @media only screen and (max-width: 40em) {
+// 	.small-centered{
+// 		margin: 0 auto;
+// 		text-align: center;
+// 	}
+// }
+
+$light-gray: #F7F7F7;
+$dark-gray: #F0F0F0;
+
+.small-centered{
+	margin: 0 auto;
+	text-align: center;
+}
+
+@mixin shadow(){
+  -webkit-box-shadow: 1px 1px 17px 0px rgba(92,92,92,1);
+  -moz-box-shadow: 1px 1px 17px 0px rgba(92,92,92,1);
+  box-shadow: 1px 1px 17px 0px rgba(92,92,92,1);
+}

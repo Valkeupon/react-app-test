@@ -1,0 +1,17 @@
+.fb_iframe_widget_fluid{
+	display: inline-block !important;
+}
+h3{
+	text-align: left;
+}
+.cd{
+	background-color: #FFFDE4;
+  @include shadow();
+	a{
+		line-height: 280px;
+		font-size: 22px;
+		font-weight: bold;
+		display: inline-block;
+		color: $black;
+	}
+}

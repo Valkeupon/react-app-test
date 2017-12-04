@@ -1,0 +1,25 @@
+$white-pure: #FAFAFA;
+$white:      #fefefe;
+
+$blue:       #BFDBF7;
+$purple:     #6356E5;
+$green:      #90EEE1;
+
+$black:      #273952;
+$gray:       #F3F3F3;
+
+$foundation-palette: (
+  primary: $blue,
+  secondary: $purple,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #cc4b37,
+);
+
+$success-color: #3adb76;
+$warning-color: #ffae00;
+$alert-color: #cc4b37;
+
+$medium-gray: $gray;
+$body-background: $white;
+$body-font-color: $black;

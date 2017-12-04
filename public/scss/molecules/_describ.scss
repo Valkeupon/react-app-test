@@ -1,0 +1,26 @@
+.text-describ{
+  padding: 14px;
+  text-align: center;
+  position: relative;
+  color: $white;
+  font-size: 20px;
+}
+.title-desc{
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  padding: 40px 20px;
+  color: $white;
+}
+.describ-header{
+  @include shadow();
+  background-color: #8AC6D0;
+}
+
+@media only screen and (min-width: 64.063em) {
+
+  .text-describ{
+    font-size: 16px;
+  }
+
+}

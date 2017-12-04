@@ -1,0 +1,20 @@
+.typeform-share{
+  display: inline-block !important;
+  float: none !important;
+}
+.button{
+  position: relative;
+  z-index: 100;
+  padding: 20px;
+  background-color: transparent;
+  border: 1px solid $white;
+  color: $white;
+  font-size: 30px;
+  background-image: none !important;
+    top: 90px;
+    transition: 0.3s;
+    &:hover{
+      transition: 0.3s;
+      background-color: $blue;
+    }
+}
