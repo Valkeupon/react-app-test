@@ -1,25 +1,21 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import firebase from 'firebase';
-//import Admin from './admin/index.js';
-import Login from './login/index.js';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './home/index.js';
-//import * as admin from "firebase-admin";
+import Admin from './admin/index.js';
+import Update from './update/index.js';
+import NotFound from './notFound/index.js';
 
-// admin.initializeApp({
-//   credential: admin.credential.applicationDefault(),
-//   databaseURL: "https://website-kapsul-9a992.firebaseio.com"
-// });
 
-var currentUser = firebase.auth().currentUser;
-console.log(currentUser);
-
-const BasicExample = () => (
+const RouterKapsul = () => (
   <Router>
     <div>
-      <Route exact path="/" component={Home}/>
-      <Route path="/admin/login" component={Login}/>
+      <Switch>
+        <Route exact path="/" component={Home}/>
+        <Route path="/admin" component={Admin}/>
+        <Route path="/update/:id" component={Update}/>
+        <Route component={NotFound}/>
+      </Switch>
     </div>
   </Router>
 )
-export default BasicExample;
+export default RouterKapsul;

@@ -10,27 +10,66 @@ const config = {
 };
 firebase.initializeApp(config);
 let ref = firebase.database().ref();
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-let authdata = firebase.auth().currentUser;
+// provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+// let authdata = firebase.auth().currentUser;
+export let provider = new firebase.auth.GoogleAuthProvider();
+export let auth = firebase.auth();
 
 export default {
-  getDatas: (params) => {
+  getDatas: (params, key, val) => {
     ref = firebase.database().ref(params);
     let array = [];
 
     return new Promise((resolve, reject) => {
-      ref.on("value", function(snapshot) {
+      if(!key && !val){
+        return ref.on("value", function(snapshot) {
+          const data = snapshot.val();
+          if(!data){
+            reject(data);
+          }
+
+          for(let key in data) {
+            data[key]._id = key;
+            array.push(data[key]);
+          }
+
+          resolve(array);
+
+          }, function (error) {
+           console.log("Error: " + error.code);
+        })
+      }
+      return ref.orderByChild(key).equalTo(val).on("child_added", function(snapshot){
+         const data = snapshot.val();
+         const keySnap = snapshot.key;
+         if(!data){
+           reject(data);
+         }
+
+         data._id = keySnap;
+         array.push(data);
+
+         resolve(array);
+
+         }, function (error) {
+          console.log("Error: " + error.code);
+       });
+    });
+  },
+  getOneData: (params, id) => {
+    ref = firebase.database().ref(params);
+    let array = [];
+
+    return new Promise((resolve, reject) => {
+      return ref.child(id).on("value", function(snapshot) {
         const data = snapshot.val();
+        const keySnap = snapshot.key;
         if(!data){
           reject(data);
         }
 
-        for(let key in data) {
-          data[key]._id = key;
-          array.push(data[key]);
-        }
-        resolve(array);
+        data._id = keySnap;
+        resolve(data);
 
         }, function (error) {
          console.log("Error: " + error.code);
@@ -42,52 +81,26 @@ export default {
     data.archived = false;
     ref.push(data);
   },
-  updateDatas: (data) => {
+  updateDatas: (data, callback) => {
     ref = firebase.database().ref("Dates/" + data._id);
     ref.set(data);
+    if(callback){
+      callback();
+    }
   },
   deleteDatas: (data) => {
     ref = firebase.database().ref("Dates/" + data._id);
     data.archived = true;
     ref.set(data);
   },
-  signin: () => {
-    firebase.auth().signInWithPopup(provider).then(function(result) {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      var token = result.credential.accessToken;
-      // The signed-in user info.
-      var user = result.user;
-      console.log(user);
-      // ...
-    }).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      // The email of the user's account used.
-      var email = error.email;
-      // The firebase.auth.AuthCredential type that was used.
-      var credential = error.credential;
-      // ...
-    });
-  },
-  createAccount: (email, password) => {
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(errorCode, errorMessage);
-    });
-  },
-  signinAccount: (email, password) => {
-    firebase.auth().signInWithEmailAndPassword(email,password).then((user)=>{
-
-    });
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        user.getToken().then(function(idToken) {
-            console.log(idToken);
-        });
+  signinAccount: (callback) => {
+    auth.signInWithPopup(provider)
+    .then((result) => {
+      const user = result.user;
+      if(callback){
+        callback(user);
       }
+      return;
     });
   }
 

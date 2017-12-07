@@ -1,0 +1,38 @@
+.content-musics{
+  padding: 20px 0 0px;
+  color: white;
+  background-color: #F0F7EE;
+  iframe{
+    border: none;
+    height: 370px !important;
+  }
+  .describ-musics{
+    color: black;
+    top: 20px;
+    font-size: 20px;
+    padding: 20px 10px;
+    text-align: center;
+    .describ-musics_title{
+      position: relative;
+      text-transform: uppercase;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+@media only screen and (min-width: 64.063em) {
+
+  .content-musics{
+    padding: 40px 0;
+    iframe{
+      border: none;
+      height: 370px !important;
+    }
+    .describ-musics{
+      padding: 0;
+      font-size: 22px;
+      text-align: left;
+    }
+  }
+}

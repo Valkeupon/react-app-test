@@ -1,11 +1,14 @@
 .menu{
-  position: relative;
-  margin: 0 !important;
+  text-align: center;
+  padding: 20px 0;
+  display: none;
+  -webkit-animation: fadein 4s; /* Safari and Chrome */
+  -moz-animation: fadein 4s; /* Firefox */
+  -ms-animation: fadein 4s; /* Internet Explorer */
+  -o-animation: fadein 4s; /* Opera */
+  animation: fadein 4s;
   .menu__list{
-    position: absolute;
-    z-index: 10;
-    width: 100%;
-    top: 0;
+    display: inline-block;
     ul{
       text-align: right;
       margin: 0 40px;
@@ -15,16 +18,19 @@
         text-decoration: none;
         padding: 15px 10px;
         list-style: none;
+        color: white;
+        a{
+          text-decoration: none;
+        }
       }
-    }
-    .menu__list--right{
-      float: right;
     }
   }
   .menu__link{
     color: $white;
+    font-size: 18px;
   }
   .menu__item{
+    display: inline-block;
     i{
       color: $white;
       font-size: 20px;
@@ -81,9 +87,26 @@
   }
 }
 
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari and Chrome */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
 @media only screen and (min-width: 64.063em) {
 
-  .section--menu--large{
+  .menu{
     display: block;
   }
   .fa-bars{

@@ -1,16 +1,20 @@
-.text-describ{
-  padding: 14px;
-  text-align: center;
-  position: relative;
-  color: $white;
-  font-size: 20px;
-}
-.title-desc{
-  font-size: 22px;
-  font-weight: bold;
-  text-align: center;
-  padding: 40px 20px;
-  color: $white;
+.content-describ{
+  color: #F0F0F0;
+  font-size: 14px;
+  padding: 20px 0 80px;
+  iframe{
+    border: none;
+    width: 330px !important;
+    height: 200px !important;
+    margin: auto;
+    display: block;
+  }
+  .describ-text{
+    font-size: 22px;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+  }
 }
 .describ-header{
   @include shadow();
@@ -19,8 +23,17 @@
 
 @media only screen and (min-width: 64.063em) {
 
-  .text-describ{
-    font-size: 16px;
+  .content-describ{
+    iframe{
+      width: 560px !important;
+      height: 315px !important;
+    }
+    .describ-text{
+      padding: 20px 50px;
+      transform: translateY(40%);
+      top: 50%;
+      text-align: left;
+    }
   }
 
 }

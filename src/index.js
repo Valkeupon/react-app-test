@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
+//import "./libs/nav.js";
 //import { BrowserHistory } from 'react-history';
 //import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 

@@ -1,34 +1,64 @@
-.header-banner {
-  background: url('../images/bg-kapsul.jpg');
-  background-size: cover;
+.mirror{
   position: relative;
-  min-height: 560px;
-  background-attachment: fixed;
-
-  &:after{
-    content: "";
-    display: block;
-    background-color: rgba(0, 0, 0, 0.2);
+  height: 427px;
+  .header_title{
     position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-  }
-  h1 {
-    position: absolute;
-    z-index: 10;
-    bottom: 100px;
-    right: 40px;
-
-    // @include breakpoint(medium) {
-    //   bottom: 50px;
-    //   right: 50px;
-    // }
-    img {
-      max-width: 250px;
+    left: 50%;
+    top: 20%;
+    margin-left: -140px;
+    width: 280px;
+    color: #F0F0F0;
+    text-align: center;
+    -webkit-animation: fadein 4s; /* Safari and Chrome */
+    -moz-animation: fadein 4s; /* Firefox */
+    -ms-animation: fadein 4s; /* Internet Explorer */
+    -o-animation: fadein 4s; /* Opera */
+    animation: fadein 4s;
+    .header_subtitle{
+      font-size: 18px;
+    }
+    h1{
+      width: 280px;
+      height: 120px;
+      img{
+        width: 280px;
+        position: absolute;
+      	display: block;
+      }
+    }
+    .fa{
+      font-size: 20px;
+      padding: 40px;
+      cursor: pointer;
+      color: white;
     }
   }
+}
+.mirror__side--one{
+  width: 100%;
+  .mirror__img{
+    transform: translate3d(0, 0, 0);
+  }
+}
+.mirror__side--two{
+  display: none;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari and Chrome */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 
@@ -36,6 +66,15 @@
 
   .header-banner {
     min-height: 100vh;
+  }
+  .mirror__side--one{
+    width: 50%;
+    .mirror__img{
+      transform: translate3d(100%, 0, 0);
+    }
+  }
+  .mirror__side--two{
+    display: flex;
   }
 
 }

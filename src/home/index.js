@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import Slide from '../slide/index.js';
-import Dates from '../dates/index.js';
+import Nav from '../nav/index.js';
+//import Dates from '../dates/index.js';
+import Describ from '../describ/index.js';
+//import Shop from '../shop/index.js';
+import Contact from '../contact/index.js';
+import Musics from '../musics/index.js';
+import Footer from '../footer/index.js';
 import DatePicker from 'react-bootstrap-date-picker';
 import fire from '../libs/firebase.js';
 
@@ -158,6 +164,13 @@ render() {
     <div>
       <div>
         <Slide/>
+        <Nav/>
+        <Describ/>
+        <Musics />
+        {//<Shop/>
+        }
+        <Contact/>
+        <Footer/>
         {//<Dates/>
       }
         {//<a href="/admin">admin</a>

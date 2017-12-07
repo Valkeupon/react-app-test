@@ -7,6 +7,9 @@
 // 		text-align: center;
 // 	}
 // }
+*:focus{
+  outline: none;
+}
 
 $light-gray: #F7F7F7;
 $dark-gray: #F0F0F0;
@@ -15,6 +18,27 @@ $dark-gray: #F0F0F0;
 	margin: 0 auto;
 	text-align: center;
 }
+
+
+body{
+  background-color: #120727 !important;
+}
+*{
+  font-family: 'Abel', sans-serif;
+}
+a{
+  text-decoration: none;
+  &:hover{
+    text-decoration: none;
+  }
+  &:focus{
+    text-decoration: none;
+  }
+  &:active{
+    text-decoration: none;
+  }
+}
+
 
 @mixin shadow(){
   -webkit-box-shadow: 1px 1px 17px 0px rgba(92,92,92,1);

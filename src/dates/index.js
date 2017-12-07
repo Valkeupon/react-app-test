@@ -136,7 +136,7 @@ class Dates extends Component {
               />
             </FormGroup>
           <FormGroup>
-            <ControlLabel>Url de l'event</ControlLabel>
+            <ControlLabel>Url de levent</ControlLabel>
               <FormControl
                 type="text"
                 value={this.state.url}
@@ -162,10 +162,10 @@ class Dates extends Component {
 
   render() {
     return (
-      <section className="content-date">
+      <section id="dates" className="content-date">
         <div className="row">
           <div className="col-lg-12 col-md-12 col-xs-12">
-            <h3>Nos prochaines dates</h3>
+            <h3>Nos prochaines dates</h3></div>
             <div className="date-list">
               <div className="media-object">
                 <div className="media-object-section">
@@ -177,7 +177,6 @@ class Dates extends Component {
               </div>
             </div>
           </div>
-        </div>
       </section>
     );
   }

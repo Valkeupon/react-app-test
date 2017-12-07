@@ -1,4 +1,4 @@
-.footer{
+.content-footer{
 	text-align: center;
 	line-height: 90px;
 	background-color: #1D263B;
@@ -7,12 +7,12 @@
 		line-height: 70px;
 	}
 	.footer__item--social{
-		padding: 10px;
+		padding: 10px 40px;
 		list-style: none;
 		display: inline-block;
 		i{
 			color: $white;
-			font-size: 24px;
+			font-size: 26px;
 		}
 	}
 }

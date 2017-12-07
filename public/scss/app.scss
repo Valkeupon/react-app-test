@@ -8,6 +8,7 @@
 @import 'settings-custom';
 @import 'plugins/navAnim';
 @import 'plugins/loader';
+@import 'plugins/mirror';
 //@include foundation-everything(true);
 
 @import 'atoms/title';
@@ -21,3 +22,6 @@
 @import 'molecules/actu';
 
 @import 'organisms/header';
+@import 'organisms/shop';
+@import 'organisms/contact';
+@import 'organisms/musics';

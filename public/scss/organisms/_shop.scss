@@ -1,0 +1,18 @@
+.shop-bg{
+  background-color: #F0F7EE;
+  height: 400px;
+  display: block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0 -160px;
+  span{
+    position: relative;
+    color: white;
+    font-size: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 20px;
+    display: inherit;
+    top: 150px;
+  }
+}
