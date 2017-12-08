@@ -27,8 +27,8 @@ class Admin extends Component {
 
   componentDidMount() {
     const _this = this;
-    auth.onAuthStateChanged((user) => {
-      if(user.email !== "kapsulband@gmail.com"){
+    auth.onAuthStateChanged((user) => {      
+      if(!user || user.email !== "kapsulband@gmail.com"){
         return _this.setState({ user: null });
       }
       if (user) {
