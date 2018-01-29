@@ -27,7 +27,7 @@ class Admin extends Component {
 
   componentDidMount() {
     const _this = this;
-    auth.onAuthStateChanged((user) => {      
+    auth.onAuthStateChanged((user) => {
       if(!user || user.email !== "kapsulband@gmail.com"){
         return _this.setState({ user: null });
       }
@@ -39,6 +39,7 @@ class Admin extends Component {
         if(!date){
           return;
         }
+
         _this.setState({
           datesValue: date
         })
@@ -55,7 +56,6 @@ class Admin extends Component {
 
   insertDates(){
     this.setState({
-      showInsert: !this.state.showInsert,
       showUpdate: false
     });
   }
@@ -160,17 +160,23 @@ class Admin extends Component {
     }
 
     const dates =  this.state.datesValue.map(function(date, i){
+      console.log(date);
       return (
         <li key={i}>
-            {date.datesFormatted} {date.lieu} <Link to={'/update/' + date._id }><i className="fa fa-pencil" aria-hidden="true"></i></Link><i className="fa fa-trash" aria-hidden="true" onClick={ () => _this.deleteDates(date) }></i>
+            {date.datesFormatted} {date.lieu} {date.ville}  
+            <div className="action-admin">
+               <Link to={'/update/' + date._id }><i className="fa fa-pencil" aria-hidden="true"></i></Link><i className="fa fa-trash" aria-hidden="true" onClick={ () => _this.deleteDates(date) }></i>
+            </div>
         </li>
       )
     });
 
     return (
-      <div>
+      <div className="dates-admin">
         <h3>Prochaines Dates</h3>
-        { dates }
+        <ul>
+          { dates }
+        </ul>
       </div>
     );
   }
@@ -189,63 +195,68 @@ class Admin extends Component {
     const dates = this.state.datesValueArchived.map(function(date, i){
       return (
         <li key={i}>
-            {date.datesFormatted} {date.lieu} <i className="fa fa-pencil" aria-hidden="true" onClick={ () => _this.updateDates(date) }></i><i className="fa fa-trash" aria-hidden="true" onClick={ () => _this.deleteDates(date) }></i>
+            {date.datesFormatted} {date.lieu}
+            <div className="action-admin">
+              <i className="fa fa-pencil" aria-hidden="true" onClick={ () => _this.updateDates(date) }></i><i className="fa fa-trash" aria-hidden="true" onClick={ () => _this.deleteDates(date) }></i>
+            </div>
         </li>
       )
     });
 
     return (
-      <div>
+      <div className="dates-admin">
         <h3>Dates passées</h3>
-        { dates }
+        <ul>
+          { dates }
+        </ul>
       </div>
     );
-  }
-
-  renderAction(){
-    if(!this.state.user){
-      return;
-    }
-
-    let insertDatesLabel = "Afficher le formulaire pour ajouter une date";
-    if(this.state.showInsert){
-      insertDatesLabel = "Cacher le formulaire";
-    }
-
-    return (
-      <Button type="submit" onClick={ this.insertDates.bind(this) }>
-        { insertDatesLabel }
-      </Button>
-    )
   }
 
 
   renderLogin(){
     if(!this.state.user){
       return(
-        <div>
-          <button type="submit" onClick={ this.login.bind(this) }>
-            Connexion
-          </button>
+        <div className="container">
+          <div className="row">
+              <div className="col-sm-6 col-md-4 col-md-offset-4">
+                <h1 className="text-center login-title">Se connecter</h1>
+                <div className="account-wall">
+                  <h2 className="text-center login-title"><img src="images/logo_kapsul-black.png" alt="groupe de musique post-rock Lille" id="logo" /></h2>
+                  <div className="form-signin">
+                    <button className="btn btn-lg btn-primary btn-block" type="submit" onClick={ this.login.bind(this) }>
+                      Connexion
+                    </button>
+                  </div>
+                </div>
+              </div>
+          </div>
         </div>);
     }
 
     return(
-      <div>
-        <button type="submit" onClick={ this.logout.bind(this) }>
-          Déconnexion
-        </button>
+      <div className="container nav-admin">
+        <div className="row">
+          <div className="col-sm-10 col-md-10">
+            <h1>Accueil Administrateur</h1>
+          </div>
+          <div className="col-sm-2 col-md-2">
+            <button type="submit" className="btn btn-lg btn-primary right" onClick={ this.logout.bind(this) }>
+              Déconnexion
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
 
   renderFormInsert(){
-    if(!this.state.showInsert){
-      return;
+    if(!this.state.user){
+      return null;
     }
     return(
       <div>
-        Ajouter
+        <h3>Ajouter</h3>
         <Form onSubmit={ this.getValidation.bind(this) }>
           <FormGroup>
             <ControlLabel>Dates</ControlLabel>
@@ -278,7 +289,7 @@ class Admin extends Component {
                 onChange={this.handleChangeVille.bind(this)}
               />
           </FormGroup>
-          <Button type="submit">
+          <Button className="btn btn-lg btn-primary btn-block" type="submit">
             valider
           </Button>
         </Form>
@@ -287,17 +298,17 @@ class Admin extends Component {
 
   render() {
     return (
-      <section className="content-date container">
+      <section className="container">
         <div className="row">
           <div className="col-lg-12 col-md-12 col-xs-12">
-            <h3>Login</h3>
-            <div>
-              { this.renderLogin() }
+            { this.renderLogin() }
+            <div className="col-lg-6 col-md-6">
               { this.renderDates() }
               { this.renderDatesArchived() }
+            </div>
+            <div className="col-lg-6 col-md-6">
               { this.renderFormInsert() }
             </div>
-            { this.renderAction() }
           </div>
         </div>
       </section>

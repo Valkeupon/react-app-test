@@ -12,20 +12,25 @@
 }
 
 $light-gray: #F7F7F7;
-$dark-gray: #F0F0F0;
+$dark-gray: #E0E0E0;
 
 .small-centered{
 	margin: 0 auto;
 	text-align: center;
 }
 
-
-body{
+.body-content{
   background-color: #120727 !important;
 }
+
 *{
   font-family: 'Abel', sans-serif;
 }
+
+.right{
+  float: right;
+}
+
 a{
   text-decoration: none;
   &:hover{

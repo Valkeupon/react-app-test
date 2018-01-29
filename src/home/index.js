@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import Slide from '../slide/index.js';
 import Nav from '../nav/index.js';
-//import Dates from '../dates/index.js';
+import Dates from '../dates/index.js';
 import Describ from '../describ/index.js';
 //import Shop from '../shop/index.js';
 import Contact from '../contact/index.js';
@@ -112,69 +112,20 @@ class Home extends Component {
   }
 
 
-  renderFormInsert(){
-    if(!this.state.showInsert){
-      return;
-    }
-    return(
-      <div>
-        Ajouter
-        <Form onSubmit={ this.getValidation.bind(this) }>
-          <FormGroup>
-            <ControlLabel>Dates</ControlLabel>
-            <DatePicker value={this.state.dates} onChange={this.handleChangeDates.bind(this)} />
-          </FormGroup>
-          <FormGroup>
-            <ControlLabel>Lieu</ControlLabel>
-              <FormControl
-                type="text"
-                value={this.state.lieu}
-                placeholder="Enter text"
-                onChange={this.handleChangeLieu.bind(this)}
-              />
-            </FormGroup>
-          <FormGroup>
-            <ControlLabel>Url de levent</ControlLabel>
-              <FormControl
-                type="text"
-                value={this.state.url}
-                placeholder="Enter text"
-                onChange={this.handleChangeUrl.bind(this)}
-              />
-            </FormGroup>
-          <FormGroup>
-            <ControlLabel>Ville</ControlLabel>
-              <FormControl
-                type="text"
-                value={this.state.ville}
-                placeholder="Enter text"
-                onChange={this.handleChangeVille.bind(this)}
-              />
-          </FormGroup>
-          <Button type="submit">
-            valider
-          </Button>
-        </Form>
-      </div>);
-  }
-
 
 render() {
   return (
-    <div>
+    <div className="body-content">
       <div>
         <Slide/>
         <Nav/>
         <Describ/>
+        <Dates/>
         <Musics />
         {//<Shop/>
         }
         <Contact/>
         <Footer/>
-        {//<Dates/>
-      }
-        {//<a href="/admin">admin</a>
-      }
       </div>
       {// <Button type="submit" onClick={ this.sign.bind(this) }>
       //   Me connecter
