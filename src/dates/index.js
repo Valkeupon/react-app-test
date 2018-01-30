@@ -28,12 +28,27 @@ class Dates extends Component {
         if(!date){
           return;
         }
-        console.log(date);
 
         _this.setState({
           datesValue: date
         })
     });
+  }
+
+  renderButtonEvent(url){
+    if(!url){
+      return (
+        <div>
+          Aucun événement
+        </div>
+      )
+    }
+
+    return(
+      <a href={url} className="btn_event" target="_blank">
+        <i className="fa fa-facebook-official" aria-hidden="true"></i>
+      </a>
+    );
   }
 
   renderDates(){
@@ -45,7 +60,7 @@ class Dates extends Component {
     }
 
     return this.state.datesValue.map(function(date, i){
-      if(date.archived){
+      if(date.archived || date.status == "waiting"){
         return;
       }
       return (
@@ -60,7 +75,7 @@ class Dates extends Component {
             {date.ville}
           </div>
           <div className="col-lg-3 col-md-3">
-            <a href="#"></a>
+            { _this.renderButtonEvent(date.url) }
           </div>
         </li>
       )
@@ -68,6 +83,23 @@ class Dates extends Component {
   }
 
   render() {
+
+    const dates = this.state.datesValue.filter(function(elem){
+      return elem.status != "waiting";
+    });
+
+    if(!dates || dates.length <= 0){
+      return (
+        <section id="dates" className="content-date">
+          <div className="row">
+            <div className="col-lg-8 col-md-8 col-xs-12 col-lg-offset-2">
+              <h3>Aucune dates de prévus</h3>
+            </div>
+          </div>
+        </section>
+      )
+    }
+
     return (
       <section id="dates" className="content-date">
         <div className="row">
@@ -86,6 +118,9 @@ class Dates extends Component {
                       </div>
                       <div className="col-lg-3">
                         Ville
+                      </div>
+                      <div className="col-lg-3">
+                        Evénement
                       </div>
                     </div>
                   </div>

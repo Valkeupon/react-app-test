@@ -64,6 +64,10 @@ class Admin extends Component {
     fire.deleteDatas(data);
   }
 
+  validDates(data){
+    fire.validDates(data);
+  }
+
   getValidation(e){
     e.preventDefault();
     if(!this.state.dates || !this.state.lieu || !this.state.ville || !this.state.datesFormatted ){
@@ -75,7 +79,8 @@ class Admin extends Component {
       ville: this.state.ville,
       lieu: this.state.lieu,
       url: this.state.url,
-      datesFormatted: this.state.datesFormatted
+      datesFormatted: this.state.datesFormatted,
+      status: "waiting"
     }
 
     fire.insertDatas('Dates/', value);
@@ -160,10 +165,22 @@ class Admin extends Component {
     }
 
     const dates =  this.state.datesValue.map(function(date, i){
-      console.log(date);
+      if(date.status == "waiting"){
+        return (
+          <li key={i}>
+              {date.datesFormatted} {date.lieu} {date.ville}
+              <div className="action-admin">
+                <i className="fa fa-check-circle" aria-hidden="true" onClick={ () => _this.validDates(date) }></i>
+                <Link to={'/update/' + date._id }><i className="fa fa-pencil" aria-hidden="true"></i></Link>
+                <i className="fa fa-trash" aria-hidden="true" onClick={ () => _this.deleteDates(date) }></i>
+              </div>
+          </li>
+        )
+      }
+
       return (
         <li key={i}>
-            {date.datesFormatted} {date.lieu} {date.ville}  
+            {date.datesFormatted} {date.lieu} {date.ville}
             <div className="action-admin">
                <Link to={'/update/' + date._id }><i className="fa fa-pencil" aria-hidden="true"></i></Link><i className="fa fa-trash" aria-hidden="true" onClick={ () => _this.deleteDates(date) }></i>
             </div>
@@ -304,10 +321,12 @@ class Admin extends Component {
             { this.renderLogin() }
             <div className="col-lg-6 col-md-6">
               { this.renderDates() }
-              { this.renderDatesArchived() }
             </div>
             <div className="col-lg-6 col-md-6">
               { this.renderFormInsert() }
+            </div>
+            <div className="col-lg-12 col-md-12">
+              { this.renderDatesArchived() }
             </div>
           </div>
         </div>

@@ -93,6 +93,11 @@ export default {
     data.archived = true;
     ref.set(data);
   },
+  validDates: (data) => {
+    ref = firebase.database().ref("Dates/" + data._id);
+    data.status = "valid";
+    ref.set(data);
+  },
   signinAccount: (callback) => {
     auth.signInWithPopup(provider)
     .then((result) => {

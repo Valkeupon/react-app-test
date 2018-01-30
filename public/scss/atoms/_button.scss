@@ -18,3 +18,16 @@
       background-color: $blue;
     }
 }
+.btn_event{
+  transition: 0.3s;
+  i{
+    color: black;
+    transition: 0.3s;
+  }
+  &:hover{
+    i{
+      transition: 0.3s;
+      color: grey;
+    }
+  }
+}

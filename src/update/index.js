@@ -35,7 +35,8 @@ class updateDates extends Component {
         lieu: date.lieu,
         url: date.url,
         ville: date.ville,
-        _id: date._id
+        _id: date._id,
+        datesFormated: date.datesFormatted
       })
     });
   }
@@ -45,7 +46,6 @@ class updateDates extends Component {
     if(!this.state.date){
       return;
     }
-
     const value = {
       content: this.state.date,
       ville: this.state.ville,
@@ -66,8 +66,8 @@ class updateDates extends Component {
   handleChangeDates(value, datesFormated ){
     this.setState({
       date: value,
-      datesFormatted: datesFormated
-    })
+      datesFormated: datesFormated
+    });
   }
 
   handleChangeLieu(e){
@@ -89,7 +89,7 @@ class updateDates extends Component {
   }
 
   renderFormUpdate(){
-    if(!this.state.date || !this.state.lieu || !this.state.ville || !this.state.url){
+    if(!this.state.date || !this.state.lieu){
       return;
     }
     return(
