@@ -46,40 +46,123 @@ class Dates extends Component {
 
     return(
       <a href={url} className="btn_event" target="_blank">
-        <i className="fa fa-facebook-official" aria-hidden="true"></i>
+        <i className="fa fa-calendar" aria-hidden="true"></i>
       </a>
     );
   }
 
   renderDates(){
     const _this = this;
-    if(!this.state.datesValue || this.state.datesValue.length <= 0){
-      return (
-        <Loader/>
-      )
-    }
+    const width = window.innerWidth;
 
-    return this.state.datesValue.map(function(date, i){
+    const dates = this.state.datesValue.map(function(date, i){
       if(date.archived || date.status == "waiting"){
         return;
       }
-      return (
-        <li key={i}>
-          <div className="col-lg-3 col-md-3">
-            {date.datesFormatted}
-          </div>
-          <div className="col-lg-3 col-md-3">
-             {date.lieu}
-          </div>
-          <div className="col-lg-3 col-md-3">
-            {date.ville}
-          </div>
-          <div className="col-lg-3 col-md-3">
-            { _this.renderButtonEvent(date.url) }
-          </div>
-        </li>
-      )
+
+      if(width >= 600) {
+        return (
+          <li key={date.content}>
+            <div className="col-lg-3 col-md-3 col-xs-3">
+              {date.datesFormatted}
+            </div>
+            <div className="col-lg-3 col-md-3 col-xs-3">
+               {date.lieu}
+            </div>
+            <div className="col-lg-3 col-md-3 col-xs-3">
+              {date.ville}
+            </div>
+            <div className="col-lg-3 col-md-3 col-xs-3">
+              { _this.renderButtonEvent(date.url) }
+            </div>
+          </li>
+        )
+      }else{
+        return (
+          <li key={date.content}>
+            <div className="col-xs-4">
+              <div>{date.datesFormatted}</div>
+              <div>{date.lieu}</div>
+            </div>
+            <div className="col-xs-5">
+              {date.ville}
+            </div>
+            <div className="col-xs-3">
+              { _this.renderButtonEvent(date.url) }
+            </div>
+          </li>
+        )
+      }
+
+
     });
+
+    const sort = dates.sort(function(a, b){
+      a = new Date(a.key);
+      b = new Date(b.key);
+      return a - b;
+    });
+
+    if(width >= 600) {
+      return (
+        <div className="col-lg-8 col-md-8 col-xs-12 col-lg-offset-2">
+          <h3>Nos prochaines dates</h3>
+          <div className="date-list">
+            <div className="media-object">
+              <div className="media-object-section">
+                <div className="media-object-section--header">
+                  <div>
+                    <div className="col-lg-3 col-xs-3">
+                      Date
+                    </div>
+                    <div className="col-lg-3 col-xs-3">
+                      Lieu
+                    </div>
+                    <div className="col-lg-3 col-xs-3">
+                      Ville
+                    </div>
+                    <div className="col-lg-3 col-xs-3">
+                      Evénement
+                    </div>
+                  </div>
+                </div>
+                <ul>
+                  { sort }
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    }else{
+      return (
+        <div className="col-lg-8 col-md-8 col-xs-12 col-lg-offset-2">
+          <h3>Nos prochaines dates</h3>
+          <div className="date-list">
+            <div className="media-object">
+              <div className="media-object-section">
+                <div className="media-object-section--header">
+                  <div>
+                    <div className="col-lg-3 col-xs-4">
+                      Date / Lieu
+                    </div>
+                    <div className="col-lg-3 col-xs-5">
+                      Ville
+                    </div>
+                    <div className="col-lg-3 col-xs-3">
+                      Evénement
+                    </div>
+                  </div>
+                </div>
+                <ul>
+                  { sort }
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      )
+    }
   }
 
   render() {
@@ -93,7 +176,7 @@ class Dates extends Component {
         <section id="dates" className="content-date">
           <div className="row">
             <div className="col-lg-8 col-md-8 col-xs-12 col-lg-offset-2">
-              <h3>Aucune dates de prévus</h3>
+              <Loader/>
             </div>
           </div>
         </section>
@@ -103,34 +186,7 @@ class Dates extends Component {
     return (
       <section id="dates" className="content-date">
         <div className="row">
-          <div className="col-lg-8 col-md-8 col-xs-12 col-lg-offset-2">
-            <h3>Nos prochaines dates</h3>
-            <div className="date-list">
-              <div className="media-object">
-                <div className="media-object-section">
-                  <div className="media-object-section--header">
-                    <div>
-                      <div className="col-lg-3">
-                        Date
-                      </div>
-                      <div className="col-lg-3">
-                        Lieu
-                      </div>
-                      <div className="col-lg-3">
-                        Ville
-                      </div>
-                      <div className="col-lg-3">
-                        Evénement
-                      </div>
-                    </div>
-                  </div>
-                  <ul>
-                    { this.renderDates() }
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+          { this.renderDates() }
         </div>
       </section>
     );

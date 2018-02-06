@@ -5,9 +5,9 @@
 	position: relative;
 	margin-bottom: 20px;
 	min-height: 280px;
-	background-position: 0 -155px;
-    background-repeat: no-repeat;
-    position: relative;
+	background-position: 0 0;
+  background-repeat: no-repeat;
+  position: relative;
     &:after{
     	content: "";
     	display: block;
@@ -95,6 +95,10 @@
 }
 
 @media only screen and (min-width: 64.063em) {
+
+	#contact{
+		background-position: 0 -155px;
+	}
 
 	.btn_contact{
 		margin: 100px 0;

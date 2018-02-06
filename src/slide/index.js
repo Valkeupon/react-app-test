@@ -45,11 +45,11 @@ class Slide extends Component {
             </div>
           </div>
         </div>
-        <div className="row">
+        {/* <div className="row">
           <div className="large-12 columns">
             <i className="fa fa-bars" aria-hidden="true"></i>
           </div>
-        </div>
+        </div> */}
       </section>
       <div className="mirror" data-tilt id="box">
         <div className="mirror__side mirror__side--one">

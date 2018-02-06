@@ -23,7 +23,7 @@
     width: 100%;
     .media-object-section--header{
       font-weight: bold;
-      font-size: 16px;
+      font-size: 14px;
       border-bottom: 1px solid black;
       overflow: hidden;
     }
@@ -39,7 +39,7 @@
 #dates{
   margin: 0;
     li{
-      line-height: 50px;
+      line-height: 16px;
       list-style: none;
       width: 100%;
       color: black;
@@ -47,6 +47,8 @@
       position: relative;
       overflow: hidden;
       border-bottom: 1px solid $dark-gray;
+      padding: 14px 0;
+      font-size: 12px;
       &:after{
         content:"";
         left: -100%;
@@ -89,8 +91,18 @@
 
 @media only screen and (min-width: 64.063em) {
 
+  .media-object{
+    .media-object-section{
+      .media-object-section--header{
+        font-size: 16px;
+      }
+    }
+  }
+
   #dates{
       li{
+        font-size: 14px;
+        line-height: 50px;
         a{
           font-size: 18px;
           line-height: 44px;
