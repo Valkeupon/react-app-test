@@ -11,8 +11,8 @@
   color: $white;
   font-size: 30px;
   background-image: none !important;
-    top: 90px;
-    transition: 0.3s;
+  top: 90px;
+  transition: 0.3s;
     &:hover{
       transition: 0.3s;
       background-color: $blue;
@@ -20,14 +20,9 @@
 }
 .btn_event{
   transition: 0.3s;
+  color: black;
   i{
     color: black;
     transition: 0.3s;
-  }
-  &:hover{
-    i{
-      transition: 0.3s;
-      color: grey;
-    }
   }
 }

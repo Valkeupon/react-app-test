@@ -39,14 +39,14 @@ class Dates extends Component {
     if(!url){
       return (
         <div>
-          Aucun événement
+          -
         </div>
       )
     }
 
     return(
       <a href={url} className="btn_event" target="_blank">
-        <i className="fa fa-calendar" aria-hidden="true"></i>
+        Plus d'infos <i className="fa fa-external-link" aria-hidden="true"></i>
       </a>
     );
   }
@@ -87,7 +87,7 @@ class Dates extends Component {
             <div className="col-xs-5">
               {date.ville}
             </div>
-            <div className="col-xs-3">
+            <div className="col-xs-3" style={{ paddingRight: '0', paddingLeft: '10px' }}>
               { _this.renderButtonEvent(date.url) }
             </div>
           </li>

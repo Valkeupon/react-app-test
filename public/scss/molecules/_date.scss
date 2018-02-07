@@ -59,13 +59,19 @@
       }
       &:hover{
         transition: 0.3s;
-        color: $white;
         background: $dark-gray;
       }
       a{
-        color: $white;
-        font-size: 22px;
+        color: black;
+        font-size: 12px;
         line-height: 24px;
+        i{
+          margin-left: 3px;
+        }
+        &:hover{
+          transition: 0.3s;
+          text-decoration: underline;
+        }
       }
     }
 }
@@ -100,14 +106,14 @@
   }
 
   #dates{
-      li{
+    li{
+      font-size: 14px;
+      line-height: 50px;
+      a{
         font-size: 14px;
-        line-height: 50px;
-        a{
-          font-size: 18px;
-          line-height: 44px;
-        }
+        line-height: 44px;
       }
+    }
   }
 
 }
