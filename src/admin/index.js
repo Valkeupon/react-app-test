@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import fire, { auth } from '../libs/firebase.js';
-import { Button, Form, FormGroup, FormControl, ControlLabel, Alert } from 'react-bootstrap';
+import { Button, Form, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import Loader from '../libs/loader.js';
 import DatePicker from 'react-bootstrap-date-picker';
 import { Link } from 'react-router-dom';
+import https from 'https';
 
 class Admin extends Component {
   constructor(props){
@@ -66,6 +67,46 @@ class Admin extends Component {
 
   validDates(data){
     fire.validDates(data);
+  }
+
+  sendNotification(data) {
+      const headers = {
+        "Content-Type": "application/json; charset=utf-8",
+        "Authorization": "Basic NmEwMTM4YzQtNDg2Yy00YzMzLTg1M2EtY2YyOTljZWVmNjVl"
+      };
+
+      const options = {
+        host: "onesignal.com",
+        port: 443,
+        path: "/api/v1/notifications",
+        method: "POST",
+        headers: headers
+      };
+
+      const req = https.request(options, function(res) {
+        res.on('data', function(data) {
+          console.log("Response:");
+          console.log(JSON.parse(data));
+        });
+      });
+
+      req.on('error', function(e) {
+        console.log("ERROR:");
+        console.log(e);
+      });
+
+      req.write(JSON.stringify(data));
+      req.end();
+  }
+
+  notif(){
+    const message = {
+      app_id: "cf3ba5ec-d0a3-416b-b8db-391ba3cfda49",
+      contents: {"en": "English Message"},
+      included_segments: ["All"]
+    };
+
+    this.sendNotification(message);
   }
 
   getValidation(e){
@@ -165,7 +206,7 @@ class Admin extends Component {
     }
 
     const dates =  this.state.datesValue.map(function(date, i){
-      if(date.status == "waiting"){
+      if(date.status === "waiting"){
         return (
           <li key={i}>
               {date.datesFormatted} {date.lieu} {date.ville}
@@ -254,8 +295,13 @@ class Admin extends Component {
     return(
       <div className="container nav-admin">
         <div className="row">
-          <div className="col-sm-10 col-md-10">
+          <div className="col-sm-8 col-md-8">
             <h1>Accueil Administrateur</h1>
+          </div>
+          <div className="col-sm-2 col-md-2">
+            <button type="submit" className="btn btn-lg btn-primary" onClick={ this.notif.bind(this) }>
+              Push notif
+            </button>
           </div>
           <div className="col-sm-2 col-md-2">
             <button type="submit" className="btn btn-lg btn-primary right" onClick={ this.logout.bind(this) }>

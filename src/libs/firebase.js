@@ -58,7 +58,6 @@ export default {
   },
   getOneData: (params, id) => {
     ref = firebase.database().ref(params);
-    let array = [];
 
     return new Promise((resolve, reject) => {
       return ref.child(id).on("value", function(snapshot) {

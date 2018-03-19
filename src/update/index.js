@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import fire from '../libs/firebase.js';
 //import Loader from '../libs/loader.js';
 //import sAlert from '../libs/alert.js';
-import { Button, Form, FormGroup, FormControl, ControlLabel, Alert } from 'react-bootstrap';
+import { Button, Form, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import DatePicker from 'react-bootstrap-date-picker';
 import { Redirect } from 'react-router-dom';
 

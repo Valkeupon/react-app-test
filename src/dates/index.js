@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import fire from '../libs/firebase.js';
 import Loader from '../libs/loader.js';
 //import sAlert from '../libs/alert.js';
-import { Button, Form, FormGroup, FormControl, ControlLabel, Alert } from 'react-bootstrap';
-import DatePicker from 'react-bootstrap-date-picker';
 //import { AlertList } from "react-bs-notifier";
 
 class Dates extends Component {
@@ -56,8 +54,8 @@ class Dates extends Component {
     const width = window.innerWidth;
 
     const dates = this.state.datesValue.map(function(date, i){
-      if(date.archived || date.status == "waiting"){
-        return;
+      if(date.archived || date.status === "waiting"){
+        return null;
       }
 
       if(width >= 600) {
@@ -168,7 +166,7 @@ class Dates extends Component {
   render() {
 
     const dates = this.state.datesValue.filter(function(elem){
-      return elem.status != "waiting";
+      return elem.status !== "waiting";
     });
 
     if(!dates || dates.length <= 0){
