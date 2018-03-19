@@ -20,7 +20,7 @@ class Describ extends Component {
               </div>
             </div>
             <div className="col-lg-6 col-md-6 col-xs-12">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/e1aT8oFCRgI" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/e1aT8oFCRgI"></iframe>
             </div>
           </div>
         </div>
