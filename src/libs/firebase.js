@@ -92,10 +92,13 @@ export default {
     data.archived = true;
     ref.set(data);
   },
-  validDates: (data) => {
+  validDates: (data, callback) => {
     ref = firebase.database().ref("Dates/" + data._id);
     data.status = "valid";
     ref.set(data);
+    if(callback){
+      callback();
+    }
   },
   signinAccount: (callback) => {
     auth.signInWithPopup(provider)

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class Slide extends Component {
 
+
   componentDidMount(){
     let parallaxBox = document.getElementById ( 'box' );
     let c1left = document.getElementById ( 'logo' ).offsetLeft;

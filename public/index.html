@@ -16,6 +16,34 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async="async"></script>
+    <script>
+      var OneSignal = window.OneSignal || [];
+
+      OneSignal.push(["init", {
+        appId: "cf3ba5ec-d0a3-416b-b8db-391ba3cfda49",
+        autoRegister: true, /* Set to true for HTTP Slide Prompt */
+        notifyButton: {
+            enable: false /* Set to false to hide */
+        },
+        promptOptions: {
+          /* actionMessage limited to 90 characters */
+          actionMessage: "Veux tu être prévenus des nouvelles dates ?",
+          /* acceptButtonText limited to 15 characters */
+          acceptButtonText: "Oui",
+          /* cancelButtonText limited to 15 characters */
+          cancelButtonText: "Non"
+        },
+        welcomeNotification: {
+          "title": "Inscrit",
+          "message": "Merci pour ton inscription !",
+          // "url": "" /* Leave commented for the notification to not open a window on Chrome and Firefox (on Safari, it opens to your webpage) */
+        }
+      }]);
+
+      OneSignal.push(function() {
+        OneSignal.showHttpPrompt();
+      });
+    </script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.

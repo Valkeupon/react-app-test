@@ -66,7 +66,9 @@ class Admin extends Component {
   }
 
   validDates(data){
-    fire.validDates(data);
+    fire.validDates(data, () => {
+      this.notif(data);
+    });
   }
 
   sendNotification(data) {
@@ -99,11 +101,11 @@ class Admin extends Component {
       req.end();
   }
 
-  notif(){
+  notif(data){
     const message = {
       app_id: "cf3ba5ec-d0a3-416b-b8db-391ba3cfda49",
-      contents: {"en": "English Message"},
-      included_segments: ["All"]
+      contents: {"en": "Nouvelle date à " + data.ville },
+      included_segments: ["Active Users"]
     };
 
     this.sendNotification(message);
@@ -223,7 +225,7 @@ class Admin extends Component {
         <li key={i}>
             {date.datesFormatted} {date.lieu} {date.ville}
             <div className="action-admin">
-               <Link to={'/update/' + date._id }><i className="fa fa-pencil" aria-hidden="true"></i></Link><i className="fa fa-trash" aria-hidden="true" onClick={ () => _this.deleteDates(date) }></i>
+               <i className="fa fa-bell" onClick={ () => _this.notif(date) }></i><Link to={'/update/' + date._id }><i className="fa fa-pencil" aria-hidden="true"></i></Link><i className="fa fa-trash" aria-hidden="true" onClick={ () => _this.deleteDates(date) }></i>
             </div>
         </li>
       )
@@ -295,13 +297,8 @@ class Admin extends Component {
     return(
       <div className="container nav-admin">
         <div className="row">
-          <div className="col-sm-8 col-md-8">
+          <div className="col-sm-10 col-md-10">
             <h1>Accueil Administrateur</h1>
-          </div>
-          <div className="col-sm-2 col-md-2">
-            <button type="submit" className="btn btn-lg btn-primary" onClick={ this.notif.bind(this) }>
-              Push notif
-            </button>
           </div>
           <div className="col-sm-2 col-md-2">
             <button type="submit" className="btn btn-lg btn-primary right" onClick={ this.logout.bind(this) }>
