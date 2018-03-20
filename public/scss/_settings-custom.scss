@@ -24,45 +24,7 @@ $dark-gray: #E0E0E0;
 }
 
 .to_top{
-  position: fixed;
-  background: #d94f5c;
-  border-radius: 3px;
-  display: block;
-  cursor: pointer;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px;
-  transition: 0.3s;
-  i{
-    color: white;
-  }
-  &:hover{
-    -webkit-animation: bottom 1s infinite; /* Safari and Chrome */
-    -moz-animation: bottom 1s infinite; /* Firefox */
-    -ms-animation: bottom 1s infinite; /* Internet Explorer */
-    -o-animation: bottom 1s infinite; /* Opera */
-    animation: bottom 1s infinite;
-  }
-}
-
-@keyframes bottom {
-    0% { bottom: 20px; }
-    50%   { bottom: 28px; }
-    100% { bottom: 20px; }
-}
-
-/* Firefox */
-@-moz-keyframes bottom {
-  0% { bottom: 20px; }
-  50%   { bottom: 28px; }
-  100% { bottom: 20px; }
-}
-
-/* Safari and Chrome */
-@-webkit-keyframes bottom {
-  0% { bottom: 20px; }
-  50%   { bottom: 28px; }
-  100% { bottom: 20px; }
+  display: none;
 }
 
 *{
@@ -91,4 +53,50 @@ a{
   -webkit-box-shadow: 1px 1px 17px 0px rgba(92,92,92,1);
   -moz-box-shadow: 1px 1px 17px 0px rgba(92,92,92,1);
   box-shadow: 1px 1px 17px 0px rgba(92,92,92,1);
+}
+
+@media only screen and (min-width: 64.063em) {
+
+  .to_top{
+    position: fixed;
+    background: #d94f5c;
+    border-radius: 3px;
+    display: block;
+    cursor: pointer;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    transition: 0.3s;
+    i{
+      color: white;
+    }
+    &:hover{
+      -webkit-animation: bottom 1s infinite; /* Safari and Chrome */
+      -moz-animation: bottom 1s infinite; /* Firefox */
+      -ms-animation: bottom 1s infinite; /* Internet Explorer */
+      -o-animation: bottom 1s infinite; /* Opera */
+      animation: bottom 1s infinite;
+    }
+  }
+
+  @keyframes bottom {
+      0% { bottom: 20px; }
+      50%   { bottom: 28px; }
+      100% { bottom: 20px; }
+  }
+
+  /* Firefox */
+  @-moz-keyframes bottom {
+    0% { bottom: 20px; }
+    50%   { bottom: 28px; }
+    100% { bottom: 20px; }
+  }
+
+  /* Safari and Chrome */
+  @-webkit-keyframes bottom {
+    0% { bottom: 20px; }
+    50%   { bottom: 28px; }
+    100% { bottom: 20px; }
+  }
+
 }

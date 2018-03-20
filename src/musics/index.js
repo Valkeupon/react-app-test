@@ -7,20 +7,39 @@ class Musics extends Component {
 
   }
 
+  renderSoundcloud(){
+    const width = window.innerWidth;
+
+    if(width <= 600){
+      return (
+        <div className="col-lg-12 col-md-12 col-xs-12">
+          <a className="content-musics--soundcloud" href="https://soundcloud.com/kapsulband">
+            <span><i className="fa fa-soundcloud"></i></span>
+            <div>Nous écouter sur Soundcloud</div>
+          </a>
+        </div>
+      );
+    }
+
+    return(
+      <div className="col-lg-6 col-md-6 col-xs-12">
+        <iframe
+          width="100%"
+          height="450"
+          scrolling="no"
+          src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/302545127&amp;color=%236cca9c&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true">
+        </iframe>
+      </div>
+    );
+  }
+
 
   render() {
     return (
       <section className="content-musics" id="musics">
         <div className="container">
           <div className="row">
-            <div className="col-lg-6 col-md-6 col-xs-12">
-              <iframe
-                width="100%"
-                height="450"
-                scrolling="no"
-                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/302545127&amp;color=%236cca9c&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true">
-              </iframe>
-            </div>
+            { this.renderSoundcloud() }
             <div className="col-lg-6 col-md-6 col-xs-12">
               <div className="describ-musics">
                 <div className="describ-musics_title">
