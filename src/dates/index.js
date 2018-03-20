@@ -103,7 +103,7 @@ class Dates extends Component {
 
     if(width >= 600) {
       return (
-        <div className="col-lg-8 col-md-8 col-xs-12 col-lg-offset-2">
+        <div className="col-lg-8 col-md-8 col-xs-12 col-lg-offset-2 col-md-offset-2">
           <h3>Nos prochaines dates</h3>
           <div className="date-list">
             <div className="media-object">

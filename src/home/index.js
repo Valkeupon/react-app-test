@@ -133,6 +133,7 @@ render() {
       // </Button>
       //   { this.renderFormInsert() }
       }
+      <a className="to_top" href="#home"><i className="fa fa-chevron-up" aria-hidden="true"></i></a>
     </div>
   );
 }
