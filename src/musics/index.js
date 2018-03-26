@@ -17,6 +17,10 @@ class Musics extends Component {
             <span><i className="fa fa-soundcloud"></i></span>
             <div>Nous écouter sur Soundcloud</div>
           </a>
+          <a className="content-musics--youtube" href="https://www.youtube.com/watch?v=prmzG0v1i-Y&list=PLd1GQkrFXog2JVlujpoExI5GR7aF-Ex-D">
+            <span><i className="fa fa-youtube"></i></span>
+            <div>Nous écouter sur Youtube</div>
+          </a>
         </div>
       );
     }

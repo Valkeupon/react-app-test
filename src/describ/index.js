@@ -8,6 +8,19 @@ class Describ extends Component {
 
   }
 
+  renderYoutube(){
+    const width = window.innerWidth;
+
+    if(width <= 600){
+      return null;
+    }
+
+    return (
+      <div className="col-lg-6 col-md-6 col-xs-12">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/e1aT8oFCRgI"></iframe>
+      </div>
+    );
+  }
 
   render() {
     return (
@@ -19,9 +32,7 @@ class Describ extends Component {
                   Style post-rock en passant par le psychédélique et le DUB vacille dans plusieurs univers au sein d’un même morceau. Une envolée musicale en capsule spatiale avec des mélodies accrocheuses et atmosphériques !
               </div>
             </div>
-            <div className="col-lg-6 col-md-6 col-xs-12">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/e1aT8oFCRgI"></iframe>
-            </div>
+            { this.renderYoutube() }
           </div>
         </div>
       </section>
