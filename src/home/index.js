@@ -6,6 +6,7 @@ import Describ from '../describ/index.js';
 //import Shop from '../shop/index.js';
 import Contact from '../contact/index.js';
 import Musics from '../musics/index.js';
+import Images from '../images/index.js';
 import Footer from '../footer/index.js';
 import fire from '../libs/firebase.js';
 
@@ -120,6 +121,7 @@ render() {
         <Describ/>
         <Dates/>
         <Musics />
+        <Images />
         {//<Shop/>
         }
         <Contact/>

@@ -16,6 +16,7 @@ class Nav extends Component {
               <li className="menu__item menu__item--current"><a href="#home" className="menu__link">Accueil</a></li>
               <li className="menu__item"><a href="#dates" className="menu__link">Dates</a></li>
               <li className="menu__item"><a href="#musics" className="menu__link">Musiques</a></li>
+            <li className="menu__item"><a href="#images" className="menu__link">Photos</a></li>
               <li className="menu__item"><a href="#contact" className="menu__link">Contact</a></li>
             </ul>
           </nav>

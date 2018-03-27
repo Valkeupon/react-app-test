@@ -11,12 +11,24 @@
   outline: none;
 }
 
+.center{
+  text-align: center;
+}
+
 $light-gray: #F7F7F7;
 $dark-gray: #E0E0E0;
 
 .small-centered{
 	margin: 0 auto;
 	text-align: center;
+}
+
+.no-padding{
+  padding: 0 !important;
+}
+
+.overflow_hidden{
+  overflow: hidden;
 }
 
 .body-content{

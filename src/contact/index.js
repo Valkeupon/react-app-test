@@ -15,7 +15,7 @@ class Contact extends Component {
         <div className="container">
           <div className="row">
             <div className="col-lg-12 col-md-12 col-xs-12">
-              Contact
+            
             </div>
           </div>
         </div>
